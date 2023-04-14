@@ -25,7 +25,7 @@ const findUserByEmail = async (email) => {
   return data
 }
 
-const createNewUser = async(userObject) => {
+const createUser = async(userObject) => {
   const newUser = {
     id: uuid.v4(),
     firstName: userObject.firstName,
@@ -65,7 +65,7 @@ const deleteUser = async(id) => {
 module.exports = {
   findAllUsers,
   findUserById,
-  createNewUser,
+  createUser,
   updateUser,
   deleteUser,
   findUserByEmail
