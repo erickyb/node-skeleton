@@ -9,7 +9,7 @@ const postLogin = (req, res) => {
                 return res.status(401).json({message: 'Invalid credentials'})
             }
             const token = jwt.sign({
-                sub: data.id,
+                id: data.id,
                 role: data.role
             }, 'Ac4d3ml0vers')
             res.status(200).json({token})
