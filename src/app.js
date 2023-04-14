@@ -24,10 +24,20 @@ db.sync()
 app.use(express.json())
 app.use(cors())
 
+const loggerMiddleware = (req, res, next) => {
+    console.log(`${req.method} | ${req.path}`)
+    if(req.method !== 'DELETE') {
+        next()
+        return
+    }
+    res.status(400).json({message: 'No hagas eso papu :c'})
+}
+app.use(loggerMiddleware)
+
 app.get('/', (req, res) => {
     res.json({
         message: 'Server OK', 
-        myMessage: process.env.MESSAGE, 
+        myMessage: req.message,
         myPort: process.env.PORT
     })
 }) 
