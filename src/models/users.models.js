@@ -1,6 +1,5 @@
 const { DataTypes} = require('sequelize')
 const db = require('../utils/database')
-const { toDefaultValue } = require('sequelize/types/utils')
 
 const Users = db.define('users', {
   id: {
@@ -42,7 +41,7 @@ const Users = db.define('users', {
   },
   role: {
     type: DataTypes.ENUM('normal', 'admin', 'superadmin'),
-    toDefaultValue: 'normal'
+    defaultValue: 'normal'
   }
 })
 
